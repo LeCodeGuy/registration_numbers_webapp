@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+body{
+    font-family: 'Nunito',sans-serif;
+    color:#847577;
+    background-color: #FBFBF2;
+}
+
+form{
+    width: 100%;
+    padding: 10px 0px;
+    text-align: center;
+    
+}
+.bodyContent {
+  /* Center the content*/
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  /* style the form */
+  background-color: #E5E6E4;
+  border-radius: 5px;
+  width: 70%;
+  margin: 5% auto
+}
+.mainHeading {
+  font-size: 65px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.errMessage {
+    color:#cc0f35;
+    font-weight:bold;
+    border: solid 2px #fbcad3;
+    background: #fbcad3;
+    margin: 0 auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 90%;
+}
+
+.content {
+  font-size: 24px;
+  /* width:465px; */
+  width: 100%;
+  text-align: center;
+  padding: 1%;
+}
+
+.txtName{
+  width:50%;
+}
+
+.btn {
+  background-color: #CFD2CD;
+  border: 0px solid #CFD2CD;
+  border-radius: 5px;
+  cursor: pointer;
+  color:#847577;
+  font-weight: bold;
+  margin: 10px 5px;
+  padding:5px;
+  width:110px;
+}
+/* .fade-out {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+.fade-out.fade-out-hidden {
+  opacity: 0;
+} */
+
+.counter {
+  padding: 0px 0px 0px 10px;
+  font-weight: bold;
+}
+
+/* MODAL */
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* gap: 0.4rem; */
+  width: 450px;
+  padding: 1.3rem;
+  min-height: 250px;
+  position: absolute;
+  /* top: 20%; */
+  top: 50%;                           /* Moves the form down 50% */
+  left: 50%;                          /* Moves the form left 50% */
+  transform: translate(-50%, -50%);   /* Puts the center of the form in the center of the page */
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 15px;
+  z-index: 2;
+}
+
+.modal .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+/* greeted users page styling */
+.tblGreeted {
+  /* width: 100%; */
+  text-align: left;
+}
+
+/* *Collapsible section */
+/* normalize */
+* {
+  margin: 0; 
+}
+/* collapsible section elements */
+.collapsible-section{
+  margin: 0 auto;
+  cursor: pointer;
+  text-align: center;
+}
+.collapsible-section .collapsible-body {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+}
+.collapsible-section .collapsible-header .title::after {
+  display: block;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 2rem;
+}
+.collapsible-section.expanded .collapsible-body {
+  max-height: 600px;
+}
+
+/* *Registration Plate Styling */
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.box {
+  display: flex;
+  height: 100px;
+  margin: 10px;
+  position: relative;
+  width: 300px;
+  z-index: 0;
+  overflow: hidden;
+  border: 0.6em solid black;
+  border-radius: 15px;
+}
+.box p {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  color:#000000;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.silver {
+  background: linear-gradient(to bottom, silver, lightgrey, silver);
+  border-radius: 15px;
+}
+
+.yellow {
+  background: linear-gradient(to bottom, gold, #ffd70096, gold);
+}
+
+/* MODAL */
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* gap: 0.4rem; */
+  width: 450px;
+  padding: 1.3rem;
+  min-height: 250px;
+  position: absolute;
+  /* top: 20%; */
+  top: 50%;                           /* Moves the form down 50% */
+  left: 50%;                          /* Moves the form left 50% */
+  transform: translate(-50%, -50%);   /* Puts the center of the form in the center of the page */
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 15px;
+  z-index: 2;
+}
+
+.modal .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+.hidden {
+  display: none;
+}
