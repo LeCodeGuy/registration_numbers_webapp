@@ -39,7 +39,9 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: create postgresql tables
-      run: PGPASSWORD=coder123 psql -h localhost -U coder -d regnumappdb -a -f ./tables.sql
+      run: PGPASSWORD=coder123 psql -h localhost -U coder -d regnumappdb -a -f ./sql/tables.sql
+    - name: populate data into table
+      run: PGPASSWORD=coder123 psql -h localhost -U coder -d regnumappdb -a -f ./sql/towns.sql
     - name: run tests with postgresql
       run:
         npm test
