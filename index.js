@@ -15,7 +15,7 @@ import registrationNumberRoutes from './routes/registration_numbers_routes.js'
 // Setup a simple ExpressJS server
 const app = express();
 
-// Initialise session middleware - flash-express depends on it
+// Initialise session middleware - flash-express depends on this don't let it down
 app.use(session({
     secret : '<add a secret string here>',
     resave: false,
@@ -49,31 +49,12 @@ let regNumInstance = registrationNumberService(db);
 let regNumApp = registrationNumberRoutes(regNumInstance);
 
 // Routes
+// TODO: bug fix required - keep showing selected town after filtering
 app.get('/', regNumApp.pageLoad);
 app.post('/add_registration',regNumApp.add); // Add button clicked
 app.get('/reset', regNumApp.reset); // Reset button clicked
 app.post('/reg_numbers/',regNumApp.showMany); // Show button clicked
 app.get('/reg_numbers/:regSelected', regNumApp.showOne); // Registration number clicked
-
-// app.post('/reg_numbers', async (req, res) => { // Show button clicked
-//     // console.log("reg_numbers route");
-//     //console.log(req.body.towns);
-//     //console.log(req.body);
-//     await regNumApp.setTownSelected(req.body.towns)
-    
-//     await regNumApp.allRegNums();
-//     res.redirect('/');
-//     // const greetedUsers = await greetingApp.greetedUsers();
-//     // res.render('GreetedUsers', { greetedUsersData: greetedUsers });
-// });
-
-// Count for specific user route - when a username is clicked on the greeted users page
-// app.get('/reg_numbers/:regNum', async (req, res) => { // registration number selected
-//     // const userData = await greetingApp.userCounter(req.params.username);
-//     // res.render('UserCount', {userData: userData});
-// });
-
-
 
 // Set PORT variable
 let PORT = process.env.PORT || 3000;

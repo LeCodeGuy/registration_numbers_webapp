@@ -1,5 +1,7 @@
 <div class="bodyContent">
     <h1 class="mainHeading">Registration Numbers Application</h1>
+
+    {{!-- Examples START --}}
     <section class="collapsible-section">
 	<a class="collapsible-header">
 		<h2>Show examples</h2>
@@ -10,6 +12,9 @@
 		</div>
 	</div>
     </section>
+    {{!-- Examples END --}}
+
+    {{!-- Main Form START --}}
     <form action="/add_registration" method="post">
         {{#if messages.error}}
         <div class="message msgError">{{messages.error}}</div>
@@ -35,15 +40,21 @@
         <div class="message msgSuccess">{{messages.success}}</div>
         {{/if}}
     </form>
+    {{!-- Main Form END --}}
+
+    {{!-- Filter Section START --}}
     <form action="/reg_numbers" method="post">
         <select name="towns" class="regNumsTown" id="regNums">
-        <option value='All'>All</option>
-        {{#each townData}}
-        <option value="{{this.town_name}}">{{this.town_name}}</option>
-        {{/each}}
+            <option value='All'>All</option>
+            {{#each townData}}
+            <option value="{{this.town_name}}">{{this.town_name}}</option>
+            {{/each}}
         </select>
         <input type="submit" value="Show" class="btn show">
     </form>
+    {{!-- Filter Section END --}}
+
+    {{!-- Display Section START --}}
     <section class="wrapper">
         {{#if noRegData}}
         <div class="noReg">No data to display</div>
@@ -56,4 +67,5 @@
         </a>
         {{/each}}
     </section>
+    {{!-- Display Section END --}}
 </div>

@@ -3,7 +3,7 @@ import flash from "express-flash";
 export default function registrationNumberApp (query){
     // Variables for use in app
     let regFormat = /^[a-zA-Z]{0,3}\s*\d{3}(?:[-\s]?\d{0,3})$/;
-    let townName = 'All'
+    let townName
     let townID = ''
     
     // * Helper Methods
@@ -84,77 +84,26 @@ export default function registrationNumberApp (query){
 
     // show multiple registration numbers
     async function showMany(req,res){
-        //console.log(req.body.towns)
         setTownName(req.body.towns);
-        //await query.getRegistrationForTown(townName);
+        
         res.redirect('/');
     }
 
     // show a single registration number
     async function showOne(req,res){
         let regSelected = req.params.regSelected ;
-        res.render('single-registration', {regSelected})
+        // Navigate to the page and pass the value onto handlebars
+        res.render('single-registration', {
+            regSelected,
+            tabTitle: 'View - Registration App',
+        })  
     }
-    
-    // async function setRegistrationVariables(regNum){
-    //     regNumEntered = regNum.toUpperCase()
-        
-    //     townData.forEach(town => {
-    //         if(regNumEntered.startsWith(town.registration_start.toUpperCase())){
-    //             townName = town.town_name;
-    //             townID = town.id;
-    //         }
-    //     });
-    // }
-
-    // async function allRegNums(){
-    //     let regNumData = await query.getRegistrationForTown(townSelected);
-
-    //     return regNumData;
-    // }
-
-    // async function addRecord(regNum){
-    //     if(regNum.length===0){
-    //         errMessage = "Please enter a registration number.";
-    //     }else{
-    //         await setRegistrationVariables(regNum);
-            
-    //         // TODO check registration number validity
-    //         // TODO 
-
-    //         //check if the town was found in the DB
-    //         if(townID.length == 0 || townName.length == 0){
-    //             errMessage = "Invalid town, please see examples."
-    //         }
-    //         else{
-    //             // Get all registration numbers for the town
-    //             let regCheck = await allRegNums(townName);
-
-    //             // check whether the exact registration number exists already
-    //             regCheck.forEach(registration =>{
-    //                 if(regNum.toUpperCase() === registration.registration_number){
-    //                     // update errMessage
-    //                     errMessage = regNum + " already exists! Please enter a new registration number.";
-    //                 }
-    //                 else{
-    //                     // add the registration record
-    //                     console.log("Reg does not exist, please add");
-    //                     query.addRegistration(regNum,townID);
-    //                 }
-    //             });
-    //         }
-    //     }
-    // }
-    
-    
 
     return {
         pageLoad,
         add,
         reset,
         showMany,
-        showOne,
-        // allRegNums,
-        // addRecord,        
+        showOne,       
     }
 }
