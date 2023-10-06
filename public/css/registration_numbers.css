@@ -30,7 +30,8 @@ form{
   text-align: center;
 }
 
-.errMessage {
+/* Flash message styling */
+.msgError {
     color:#cc0f35;
     font-weight:bold;
     border: solid 2px #fbcad3;
@@ -39,6 +40,16 @@ form{
     border-radius: 5px;
     text-align: center;
     width: 90%;
+}
+.msgSuccess {
+  color:#228b22;
+  font-weight:bold;
+  border: solid 2px #bce3bc;
+  background: #bce3bc;
+  margin: 0 auto;
+  border-radius: 5px;
+  text-align: center;
+  width: 90%;
 }
 
 .content {
@@ -125,7 +136,10 @@ form{
   /* width: 100%; */
   text-align: left;
 }
-
+a {
+  text-decoration: none;
+  color: inherit;
+}
 /* *Collapsible section */
 /* normalize */
 * {
@@ -153,6 +167,12 @@ form{
 .collapsible-section.expanded .collapsible-body {
   max-height: 600px;
 }
+/* No Registrations Found */
+.noReg{
+  font-size: xx-large;
+  margin: 0 auto;
+  padding: 10px 0px;
+}
 
 /* *Registration Plate Styling */
 .wrapper {
@@ -166,7 +186,7 @@ form{
   height: 100px;
   margin: 10px;
   position: relative;
-  width: 300px;
+  width: 250px;
   z-index: 0;
   overflow: hidden;
   border: 0.6em solid black;
@@ -177,7 +197,7 @@ form{
   align-items: center;
   margin: 0 auto;
   color:#000000;
-  font-size: 40px;
+  font-size: 35px;
   font-weight: bold;
 }
 

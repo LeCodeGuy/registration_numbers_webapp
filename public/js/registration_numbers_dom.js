@@ -64,7 +64,7 @@ document.addEventListener("keydown", function (e) {
 
 // Automatically remove flash messages after 3 seconds
 setTimeout(() => {
-    const flashMessages = document.querySelectorAll(".errMessage");
+    const flashMessages = document.querySelectorAll(".message");
     flashMessages.forEach((message) => {
         message.remove();
     });

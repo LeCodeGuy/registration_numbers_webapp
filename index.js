@@ -48,57 +48,32 @@ app.use(bodyParser.json());
 let regNumInstance = registrationNumberService(db);
 let regNumApp = registrationNumberRoutes(regNumInstance);
 
-// Landing page route
-app.get('/', async (req, res) => {
-    req.flash('title','Registration Numbers Application');
-    req.flash('error',await regNumApp.getError());
-    
-    // get all towns
-    const townData = await regNumApp.allTowns();
+// Routes
+app.get('/', regNumApp.pageLoad);
+app.post('/add_registration',regNumApp.add); // Add button clicked
+app.get('/reset', regNumApp.reset); // Reset button clicked
+app.post('/reg_numbers/',regNumApp.showMany); // Show button clicked
+app.get('/reg_numbers/:regSelected', regNumApp.showOne); // Registration number clicked
 
-    const regNumData = await regNumApp.allRegNums();
+// app.post('/reg_numbers', async (req, res) => { // Show button clicked
+//     // console.log("reg_numbers route");
+//     //console.log(req.body.towns);
+//     //console.log(req.body);
+//     await regNumApp.setTownSelected(req.body.towns)
     
-    res.render('home', {
-        // variables to be passed on to handlebars
-        title: 'Home',
-        townData: townData,
-        regNumData: regNumData,
-    });
-    // this is done so that previous messages aren't displayed on page refresh.
-    // greetingApp.resetVariables();
-});
-
-// Greet route when user is greeted - when greet me is clicked
-app.post('/add_registration', async (req, res) => {
-    // await greetingApp.addUser(req.body.radioLang, req.body.txtBoxName, req);
-    await regNumApp.addRecord(req.body.txtRegNum);
-    res.redirect('/');
-});
-
-// Greeted users route - when greeted users is clicked
-app.post('/reg_numbers', async (req, res) => {
-    // console.log("reg_numbers route");
-    //console.log(req.body.towns);
-    //console.log(req.body);
-    await regNumApp.setTownSelected(req.body.towns)
-    
-    await regNumApp.allRegNums();
-    res.redirect('/');
-    // const greetedUsers = await greetingApp.greetedUsers();
-    // res.render('GreetedUsers', { greetedUsersData: greetedUsers });
-});
+//     await regNumApp.allRegNums();
+//     res.redirect('/');
+//     // const greetedUsers = await greetingApp.greetedUsers();
+//     // res.render('GreetedUsers', { greetedUsersData: greetedUsers });
+// });
 
 // Count for specific user route - when a username is clicked on the greeted users page
-app.get('/reg_numbers/:regNum', async (req, res) => {
-    // const userData = await greetingApp.userCounter(req.params.username);
-    // res.render('UserCount', {userData: userData});
-});
+// app.get('/reg_numbers/:regNum', async (req, res) => { // registration number selected
+//     // const userData = await greetingApp.userCounter(req.params.username);
+//     // res.render('UserCount', {userData: userData});
+// });
 
-// Reset data route - when the reset count button is clicked
-app.get('/reset', async (req, res) => {
-    await regNumApp.reset();
-    res.redirect('/');
-});
+
 
 // Set PORT variable
 let PORT = process.env.PORT || 3000;

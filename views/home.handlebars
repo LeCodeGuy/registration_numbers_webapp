@@ -1,20 +1,18 @@
 <div class="bodyContent">
-    {{#if messages.title}}
-    <h1 class="mainHeading">{{messages.title}}</h1>
-    {{/if}}
+    <h1 class="mainHeading">Registration Numbers Application</h1>
     <section class="collapsible-section">
 	<a class="collapsible-header">
 		<h2>Show examples</h2>
 	</a>
 	<div class="collapsible-body">
 		<div class="collapse-content">
-			<p> CF 123 456, CFM 456-789, CAW 123456</p>
+			<p>CF 123 456, CFM 456-789, CAW 123456</p>
 		</div>
 	</div>
     </section>
     <form action="/add_registration" method="post">
         {{#if messages.error}}
-        <div class="errMessage">{{messages.error}}</div>
+        <div class="message msgError">{{messages.error}}</div>
         {{/if}}
         <input type="text" name="txtRegNum" id="txtRegNum" class="txtRegNum" placeholder="Enter registration number">
         <input type="submit" value="Add" class="btn add">
@@ -33,6 +31,9 @@
         </div>
         {{!-- Modal Dialog END --}}
         <input type="button" value="Reset" class="btn btn-open">
+        {{#if messages.success}}
+        <div class="message msgSuccess">{{messages.success}}</div>
+        {{/if}}
     </form>
     <form action="/reg_numbers" method="post">
         <select name="towns" class="regNumsTown" id="regNums">
@@ -44,8 +45,15 @@
         <input type="submit" value="Show" class="btn show">
     </form>
     <section class="wrapper">
+        {{#if noRegData}}
+        <div class="noReg">No data to display</div>
+        {{/if}}
         {{#each regNumData}}
-        <div class="box yellow"><p>{{this.registration_number}}</p></div>
+        <a href="/reg_numbers/{{this.registration_number}}">
+            <div class="box yellow">
+                <p>{{this.registration_number}}</p>
+            </div>
+        </a>
         {{/each}}
     </section>
 </div>
