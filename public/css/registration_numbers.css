@@ -45,6 +45,12 @@ form{
   width:110px;
 }
 
+.selectedTown{
+  /* hide the element from view until it is later removed */
+  color:#847577; 
+  visibility: hidden;
+}
+
 a {
   text-decoration: none;
   color: inherit;
