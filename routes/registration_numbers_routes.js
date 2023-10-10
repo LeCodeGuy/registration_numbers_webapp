@@ -28,6 +28,7 @@ export default function registrationNumberApp (query){
             townData,
             regNumData,
             noRegData: (regNumData.length == 0),
+            townName,
         });
     }
 
@@ -42,6 +43,9 @@ export default function registrationNumberApp (query){
             if(checkRegFormat(regNumber)){                                          
                 // Check whether registration exists in the DB
                 if(await query.checkRegistration(regNumber) === false){
+                    // clear townID before forEach loop
+                    townID = '';
+
                     // Loops the towns and sets the townName and townID if it is supported
                     validTowns.forEach(town => {
                         if(regNumber.startsWith(town.registration_start.toUpperCase())){
@@ -51,7 +55,7 @@ export default function registrationNumberApp (query){
                     //  If townID is returned add the registration number
                     if(townID != ''){
                         await query.addRegistration(regNumber,townID);
-                        req.flash('success','Registration successfully added');
+                        req.flash('success',regNumber+' successfully added');
                     }
                     //  Display message
                     else{

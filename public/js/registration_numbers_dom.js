@@ -1,5 +1,7 @@
+// *Variables
 let collapsibleHeaders = document.querySelector('.collapsible-header');
-//let resetBtn = document.querySelector('.reset');
+let loadTown = document.querySelector('.selectedTown');
+let towns = document.querySelector('.regNumsTown');
 
 // Get modal DOM Elements
 const modal = document.querySelector(".modal");
@@ -8,6 +10,12 @@ const openModalBtn = document.querySelector(".btn-open");
 const closeModalBtn = document.querySelector(".btn-close");
 const proceedBtn = document.querySelector('.btnProceed');
 
+// *Event listeners
+document.addEventListener('DOMContentLoaded',setTownSelected);
+
+collapsibleHeaders.addEventListener('click',toggleExamples);
+
+// ? Modal listeners
 // Event listener to the open modal when the reset Count button is clicked
 openModalBtn.addEventListener("click", openModal);
 // Event listener for the proceed button on the modal
@@ -16,9 +24,7 @@ proceedBtn.addEventListener("click", redirect);
 closeModalBtn.addEventListener("click", closeModal);
 overlay.addEventListener("click", closeModal);
 
-collapsibleHeaders.addEventListener('click',toggleExamples);
-//resetBtn.addEventListener('click',openModal);
-
+// *Functions
 function toggleExamples() {
 	// adds and removes the expanded class
     this.parentElement.classList.toggle('expanded');
@@ -69,3 +75,18 @@ setTimeout(() => {
         message.remove();
     });
 }, 3000);
+
+// Sets the towns drop down to the selected town prior to page refresh
+function setTownSelected(){
+    // loop through the towns in the drop down
+    for(i = 0; i < towns.length; i++){
+        // if placeholder matches a town in the drop down
+        if(towns[i].text === loadTown.innerHTML){
+            // select the option
+            towns[i].selected = true; 
+        }
+    }
+
+    // remove the placeholder
+    loadTown.remove();
+}
